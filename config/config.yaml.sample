@@ -1,0 +1,21 @@
+development:
+  db:
+    uri: "mongodb://localhost/wowzamon"
+  facebook:
+    appId: ""
+    appSecret: ""
+    host_uri: "http://dev.willskills.com:3000"
+staging:
+  db:
+    uri: "mongodb://localhost/wowzamon"
+  facebook:
+    appId: ""
+    appSecret: ""
+    host_uri: "http://localhost:3000"
+production:
+  db:
+    uri: "mongodb://localhost/wowzamon"
+  facebook:
+    appId: ""
+    appSecret: ""
+    host_uri: "http://dev.willskills.com:3000"

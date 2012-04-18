@@ -1,0 +1,4 @@
+cd config
+mv config.yaml.sample config.yaml
+
+Add FB keys as needed

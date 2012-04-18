@@ -1,0 +1,33 @@
+h2= title
+
+!= messages()
+
+form(method="post",action="/servers")
+  p
+    label Title
+    br
+    input(type="text", name="server[title]", value=server.title)
+
+  p
+    label Hostname
+    br  
+    textarea(name="server[hostname]")=server.hostname
+
+  p
+    label Port
+    br  
+    textarea(name="server[port]")=server.port
+
+  p
+    label Username
+    br  
+    textarea(name="server[username]")=server.username
+
+  p
+    label Password
+    br  
+    textarea(name="server[password]")=server.password	
+
+  input(type="submit", value="Submit")
+  &nbsp;
+  a(href='/servers', title="cancel") Cancel

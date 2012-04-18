@@ -1,0 +1,26 @@
+!= messages()
+
+h2= title
+
+p hostname:port #{server.hostname}:#{server.port}
+
+p Let's stuff our graph outputs here :)
+
+p.server_date #{dateformat(server.created_at, "%b %d, %Y at %I:%M %p")}
+
+p
+  a(href='/server/'+server._id+'/edit', title="edit") Edit
+  &nbsp;
+  a(class='destroy', href='/server/'+server._id, title="delete") Delete
+  &nbsp;
+  a(href='/servers', title="back") Back
+  &nbsp;
+  if (server.user)
+    br
+    | by
+    a(href='/profile/'+server.user.id, title="back")= server.user.fb.name.full
+
+p
+  h2 Comments
+  != partial('../comments/list', {collection : comments, as : 'comment'})
+  != partial('../comments/form')  

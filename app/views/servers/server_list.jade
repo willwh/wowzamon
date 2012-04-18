@@ -1,0 +1,14 @@
+- if(lastInCollection)
+  - clas = 'last'
+- else
+  - clas = ''
+div(class="server #{clas}")
+  div.server_title
+    a(href='/server/'+server._id, title=server.title) #{server.title}
+  div.server_body
+    =server.hostname
+  a(href='/server/'+server._id+'/edit', title="edit") Edit
+  &nbsp;
+  a(class='destroy', href='/server/'+server._id, title="delete") Delete
+  &nbsp;
+  span.server_date #{dateformat(server.created_at, "%b %d, %Y at %I:%M %p")} |

@@ -1,0 +1,29 @@
+#logo
+  h1
+    a(href="/servers", title="wowzamon") wowzamon
+    br
+    .let-me-know A monitoring app built by&nbsp
+      a(href="http://www.willwh.com") willwh
+      | , a sleepy sys admin.
+      br
+      | You can shoot me a mail
+      a(href="mailto:me@willwh.com") here
+#user_nav
+  a(href="/servers/new", title="new server") New Server
+  \ |
+  a(href='/servers', title="server listing") Server Listing
+  \ |
+  if (everyauth.loggedIn)
+    a(href="/profile/"+current_user.id, title="Profile") Profile
+    \ |
+    a(href="/logout", title="logout") Logout
+  else
+    a(href="/auth/facebook", title="Login") Login
+
+  br
+  br
+  div.let-me-know Please send feature requests 
+    br
+    | or add to the issue queue.
+    a(href="https://github.com/willwh/wowzamon/issues", title="issue tracker") let us know
+.clear

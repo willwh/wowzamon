@@ -1,0 +1,10 @@
+!= messages()
+
+h2= title
+
+div#servers
+  - if(servers.length)
+    != partial('server_list', {collection : servers, as : 'server'})
+  - else
+    #no-results No servers found. Create one
+      a(href="/servers/new") &nbsp;here
