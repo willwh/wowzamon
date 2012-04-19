@@ -2,10 +2,18 @@
 
 h2= title
 
-p hostname:port #{server.hostname}:#{server.port}
+p #{server.hostname}:#{server.port}
 
-p Let's stuff our graph outputs here :)
+h3 jolokia returns
 
+p #{Connections}
+
+h3 Status
+
+if (Status.status == 200)
+  p Up
+else 
+  p down
 p.server_date #{dateformat(server.created_at, "%b %d, %Y at %I:%M %p")}
 
 p
@@ -21,6 +29,6 @@ p
     a(href='/profile/'+server.user.id, title="back")= server.user.fb.name.full
 
 p
-  h2 Comments
+  h3 Comments
   != partial('../comments/list', {collection : comments, as : 'comment'})
-  != partial('../comments/form')  
+  = partial('../comments/form')  

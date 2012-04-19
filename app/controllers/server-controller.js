@@ -1,5 +1,7 @@
 var Server = mongoose.model('Server')
   , Comment = mongoose.model('Comment')
+  , rest = require('restler')
+  , sys = require('util')
 
 module.exports = function(app){
 
@@ -84,13 +86,21 @@ module.exports = function(app){
 
   // View an server
   app.get('/server/:id', function(req, res){
-    res.render('servers/show', {
-      title: req.server.title,
-      server: req.server,
-      comments: req.comments
+    rest.get('http://hqx.netromedia.com:8778/jolokia/read/WowzaMediaServerPro:name=Connections').on('complete', function(serverconns) {
+     if (serverconns instanceof Error) {
+       sys.puts('Error: ' + serverconns.message);
+         this.retry(5000); // try again after 5 sec
+       } else {
+         res.render('servers/show', {
+           title: req.server.title,
+           server: req.server,
+           Connections: serverconns,
+           Status: JSON.parse(serverconns),
+           comments: req.comments
+         })
+       }
     })
   })
-
   // Delete an server
   app.del('/server/:id', function(req, res){
     var server = req.server

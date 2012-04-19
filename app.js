@@ -2,6 +2,8 @@
  * Configuration loading and booting of controllers and custom error handlers */
 
 var express = require('express')
+var rest = require('restler')
+var sys = require('util')
 var fs = require('fs')
 utils = require('./lib/utils')
 auth = require('./authorization')

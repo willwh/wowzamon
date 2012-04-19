@@ -1,0 +1,33 @@
+var ircLib = require('irc')
+var fs = require('fs')
+
+
+
+CHANNELS = config.channels
+CHANNELS.forEach(function(c, i) {
+    if (c.indexOf('#') < 0) {
+          CHANNELS[i] = "#" + c.trim();
+            }   
+});
+var client = new ircLib.Client(config.host, config.nick, {
+          channels: CHANNELS
+          }); 
+
+function botSend(message) {
+    CHANNELS.forEach(function(c, i) {
+          client.say(c, message);
+            }); 
+}
+
+app.post('/irc', function(req, res) {
+    var payload = JSON.parse(req.body.payload);
+
+      payload.commits.forEach(function(c, i) {
+            var topic = c.message.split('\n')[0];
+                var id = c.id;
+                    var author = c.author.name;
+                        var url = c.url;
+                            botSend(author + " made a new commit! See it here " + url);
+                              }); 
+        res.send("");
+});
