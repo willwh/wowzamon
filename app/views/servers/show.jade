@@ -6,11 +6,11 @@ p #{server.hostname}:#{server.port}
 
 h3 jolokia returns
 
-p #{Connections}
+p #{Jolokia}
 
 h3 Status
 
-if (Status.status == 200)
+if (Connections.status == 200)
   p Up
 else 
   p down
@@ -31,4 +31,4 @@ p
 p
   h3 Comments
   != partial('../comments/list', {collection : comments, as : 'comment'})
-  = partial('../comments/form')  
+  != partial('../comments/form')  

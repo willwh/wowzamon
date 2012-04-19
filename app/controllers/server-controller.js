@@ -94,8 +94,8 @@ module.exports = function(app){
          res.render('servers/show', {
            title: req.server.title,
            server: req.server,
-           Connections: serverconns,
-           Status: JSON.parse(serverconns),
+           Jolokia: serverconns,
+           Connections: JSON.parse(serverconns),
            comments: req.comments
          })
        }
